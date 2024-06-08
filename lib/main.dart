@@ -1,3 +1,4 @@
+import 'package:arkatrack/presentation/dashboard/dashboard_screen.dart';
 import 'package:arkatrack/presentation/splash/splash_screen.dart';
 import 'package:arkatrack/utils/constant.dart';
 import 'package:arkatrack/utils/route.dart';
@@ -29,6 +30,8 @@ class MyApp extends StatelessWidget {
           switch (settings.name) {
             case ScreenRouter.splash:
               return const SplashScreen();
+            case ScreenRouter.dashboard:
+              return const DashboardScreen();
 
             default:
               return Scaffold(

@@ -1,7 +1,5 @@
 import 'package:arkatrack/presentation/splash/controller/splash_controller.dart';
 import 'package:arkatrack/presentation/splash/widgets/animated_logo_widget.dart';
-import 'package:arkatrack/style/color.dart';
-import 'package:arkatrack/style/typography.dart';
 import 'package:arkatrack/utils/constant.dart';
 import 'package:arkatrack/utils/route.dart';
 import 'package:flutter/material.dart';
