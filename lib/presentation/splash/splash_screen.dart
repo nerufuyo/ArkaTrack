@@ -1,8 +1,6 @@
 import 'package:arkatrack/style/color.dart';
 import 'package:arkatrack/style/typography.dart';
 import 'package:arkatrack/utils/constant.dart';
-import 'package:arkatrack/utils/general_function.dart';
-import 'package:arkatrack/utils/route.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
