@@ -6,6 +6,10 @@ class LocalImages {
   final String arkademiLogo = 'assets/images/arkademi_logo.png';
 }
 
+class LocalLotties {
+  final String emptyAnimation = 'assets/lotties/empty_animation.json';
+}
+
 class LocalIcons {
   final String employeeIcon = 'assets/icons/employee_icon.png';
   final String employeeIconActive = 'assets/icons/employee_selected_icon.png';
@@ -17,6 +21,8 @@ class LocalIcons {
   final String userIconActive = 'assets/icons/user_selected_icon.png';
   final String requestIcon = 'assets/icons/request_icon.png';
   final String requestIconActive = 'assets/icons/request_selected_icon.png';
+  final String backIcon = 'assets/icons/arrow_left_icon.png';
+  final String nextIcon = 'assets/icons/arrow_right_icon.png';
 }
 
 List bottomNavigationItems = [

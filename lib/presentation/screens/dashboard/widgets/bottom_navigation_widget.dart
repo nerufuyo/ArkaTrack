@@ -20,11 +20,7 @@ class _BottomNavigationWidgetState extends State<BottomNavigationWidget> {
   Widget build(BuildContext context) {
     return BottomNavigationBar(
       currentIndex: widget.selectedIndex,
-      onTap: (index) {
-        setState(() {
-          widget.selectedIndex = index;
-        });
-      },
+      onTap: (index) => setState(() => widget.selectedIndex = index),
       showSelectedLabels: false,
       showUnselectedLabels: false,
       type: BottomNavigationBarType.fixed,

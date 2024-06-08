@@ -1,5 +1,4 @@
 import 'package:arkatrack/style/color.dart';
-import 'package:arkatrack/style/typography.dart';
 import 'package:arkatrack/utils/constant.dart';
 import 'package:flutter/material.dart';
 
@@ -15,16 +14,6 @@ class AnimatedLogoWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Center(
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.4,
-            height: MediaQuery.of(context).size.height * 0.4,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              color: AppColors.primary,
-            ),
-          ),
-        ),
         Center(
           child: Container(
             width: MediaQuery.of(context).size.width * 0.65,
@@ -44,18 +33,6 @@ class AnimatedLogoWidget extends StatelessWidget {
             images.arkademiLogo,
             width: 200,
             height: 200,
-          ),
-        ),
-        const Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: EdgeInsets.only(bottom: 40),
-            child: AppTypography(
-              text: 'Powered by Arkademi',
-              fontSize: AppFontSize.extraLarge,
-              fontFamily: AppFontStyle.poppinsExtraBold,
-              color: AppColors.primary,
-            ),
           ),
         ),
       ],

@@ -1,5 +1,4 @@
-import 'package:arkatrack/presentation/dashboard/widgets/bottom_navigation_widget.dart';
-import 'package:arkatrack/utils/constant.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/bottom_navigation_widget.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {

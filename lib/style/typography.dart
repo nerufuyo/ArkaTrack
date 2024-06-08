@@ -48,6 +48,7 @@ class AppTypography extends StatelessWidget {
     this.maxLines,
     this.overflow,
     this.fontFamily,
+    this.fontWeight,
   });
 
   final String text;
@@ -57,6 +58,7 @@ class AppTypography extends StatelessWidget {
   final int? maxLines;
   final TextOverflow? overflow;
   final String? fontFamily;
+  final FontWeight? fontWeight;
 
   @override
   Widget build(BuildContext context) {
@@ -65,6 +67,7 @@ class AppTypography extends StatelessWidget {
       style: TextStyle(
         fontFamily: fontFamily ?? AppFontStyle.poppinsRegular,
         fontSize: fontSize ?? AppFontSize.medium,
+        fontWeight: fontWeight ?? FontWeight.normal,
         color: color ?? AppColors.black,
       ),
       textAlign: textAlign ?? TextAlign.left,
