@@ -40,7 +40,7 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
       child: Container(
         width: widget.width,
         height: widget.height,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: AppColors.primary,
           borderRadius: BorderRadius.circular(8),

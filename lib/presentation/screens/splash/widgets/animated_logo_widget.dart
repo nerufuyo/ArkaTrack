@@ -16,8 +16,8 @@ class AnimatedLogoWidget extends StatelessWidget {
       children: [
         Center(
           child: Container(
-            width: MediaQuery.of(context).size.width * 0.65,
-            height: MediaQuery.of(context).size.width * 0.65,
+            width: MediaQuery.of(context).size.width * 0.55,
+            height: MediaQuery.of(context).size.width * 0.55,
             decoration: BoxDecoration(
               border: Border.all(
                 color: AppColors.primary,
@@ -31,8 +31,8 @@ class AnimatedLogoWidget extends StatelessWidget {
         Center(
           child: Image.asset(
             images.arkademiLogo,
-            width: 200,
-            height: 200,
+            width: 160,
+            height: 160,
           ),
         ),
       ],
