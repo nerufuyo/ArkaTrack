@@ -1,4 +1,5 @@
 import 'package:arkatrack/presentation/screens/dashboard/widgets/bottom_navigation_widget.dart';
+import 'package:arkatrack/utils/constant.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {
@@ -14,21 +15,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Dashboard'),
+      body: bottomNavigationItems[selectedIndex]['screen'] as Widget,
+      bottomNavigationBar: BottomNavigationWidget(
+        selectedIndex: selectedIndex,
       ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Welcome to the Dashboard',
-              style: TextStyle(fontSize: 24),
-            ),
-          ],
-        ),
-      ),
-      bottomNavigationBar: BottomNavigationWidget(selectedIndex: selectedIndex),
     );
   }
 }

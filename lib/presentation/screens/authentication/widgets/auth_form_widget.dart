@@ -1,3 +1,4 @@
+import 'package:arkatrack/presentation/screens/authentication/controller/auth_controller.dart';
 import 'package:arkatrack/presentation/widgets/app_button_widget.dart';
 import 'package:arkatrack/presentation/widgets/app_textfield_widget.dart';
 import 'package:arkatrack/style/color.dart';
@@ -22,25 +23,21 @@ class AuthFormWidget extends StatefulWidget {
 }
 
 class _AuthFormWidgetState extends State<AuthFormWidget> {
-  late List<TextEditingController> controllers;
-  late List<String> errorTexts;
+  final AuthController controller = AuthController();
 
-  void generateControllers() {
-    controllers = List.generate(
-      widget.selectedPageValue == 0 ? 2 : 3,
-      (index) => TextEditingController(),
-    );
-    errorTexts = List.generate(
-      widget.selectedPageValue == 0 ? 2 : 3,
-      (index) => '',
-    );
+  List<TextEditingController> controllers = [];
+  List<String> errorTexts = [];
+
+  @override
+  void initState() {
+    controllers = List.generate(3, (index) => TextEditingController());
+    errorTexts = List.generate(3, (index) => '');
+    super.initState();
   }
 
   @override
   void dispose() {
-    for (var element in controllers) {
-      element.dispose();
-    }
+    controller.disposeControllers(controllers);
     super.dispose();
   }
 
@@ -52,8 +49,6 @@ class _AuthFormWidgetState extends State<AuthFormWidget> {
           children: List.generate(
             widget.selectedPageValue == 0 ? 2 : 3,
             (colIndex) {
-              generateControllers();
-
               String titleText;
               String hintText;
               bool isPassword = false;

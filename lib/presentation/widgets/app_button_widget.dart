@@ -34,8 +34,6 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
         if (widget.onClicked != null) {
           widget.onClicked!();
         }
-
-        Navigator.pop(context);
       },
       child: Container(
         width: widget.width,

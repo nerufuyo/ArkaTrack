@@ -6,6 +6,7 @@ import 'package:arkatrack/presentation/widgets/app_name_widget.dart';
 import 'package:arkatrack/style/color.dart';
 import 'package:arkatrack/style/typography.dart';
 import 'package:arkatrack/utils/extension.dart';
+import 'package:arkatrack/utils/route.dart';
 import 'package:flutter/material.dart';
 
 class AuthenticationScreen extends StatefulWidget {
@@ -51,7 +52,10 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                   const AppNameWidget(fontSize: 40),
                   WelcomeTextWidget(selectedPageValue: selectedPageValue),
                   AuthFormWidget(
-                    buttonClicked: () {},
+                    buttonClicked: () => Navigator.pushNamed(
+                      context,
+                      ScreenRouter.dashboard,
+                    ),
                     linkClicked: () {},
                     selectedPageValue: selectedPageValue,
                   ),
