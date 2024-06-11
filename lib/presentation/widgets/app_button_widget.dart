@@ -12,6 +12,9 @@ class AppButtonWidget extends StatefulWidget {
     this.buttonIcon,
     this.isIconLeft,
     this.isIconRight,
+    this.buttonColor,
+    this.buttonBorderColor,
+    this.textColor,
   });
 
   final Function? onClicked;
@@ -21,6 +24,9 @@ class AppButtonWidget extends StatefulWidget {
   final String? buttonIcon;
   final bool? isIconLeft;
   final bool? isIconRight;
+  final Color? buttonColor;
+  final Color? buttonBorderColor;
+  final Color? textColor;
 
   @override
   State<AppButtonWidget> createState() => _AppButtonWidgetState();
@@ -40,7 +46,11 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
         height: widget.height,
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
-          color: AppColors.primary,
+          color: widget.buttonColor ?? AppColors.primary,
+          border: Border.all(
+            color: widget.buttonBorderColor ?? AppColors.primary,
+            width: 1,
+          ),
           borderRadius: BorderRadius.circular(8),
         ),
         child: widget.buttonIcon == ''
@@ -48,7 +58,7 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
                 text: widget.buttonText ?? 'Try Again',
                 fontSize: AppFontSize.large,
                 fontWeight: FontWeight.bold,
-                color: AppColors.white,
+                color: widget.textColor ?? AppColors.white,
               )
             : Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +75,7 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
                     text: widget.buttonText ?? 'Try Again',
                     fontSize: AppFontSize.large,
                     fontWeight: FontWeight.bold,
-                    color: AppColors.white,
+                    color: widget.textColor ?? AppColors.white,
                   ),
                   if (widget.isIconRight == true) ...[
                     const SizedBox(width: 8),
