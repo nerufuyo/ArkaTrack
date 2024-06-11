@@ -1,3 +1,4 @@
+import 'package:arkatrack/presentation/screens/dashboard/widgets/announcement_list_widget.dart';
 import 'package:arkatrack/presentation/screens/dashboard/widgets/attendance_widget.dart';
 import 'package:arkatrack/presentation/screens/dashboard/widgets/category_list_widget.dart';
 import 'package:arkatrack/presentation/screens/dashboard/widgets/quick_info_widget.dart';
@@ -15,7 +16,7 @@ class HomeWidget extends StatefulWidget {
 class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(
         horizontal: 16,
         vertical: 8,
@@ -28,6 +29,7 @@ class _HomeWidgetState extends State<HomeWidget> {
           ),
           AttendanceWidget(),
           CategoryListsWidget(),
+          AnnouncementListWidget(),
         ],
       ).withVerticalSpacing(24),
     );

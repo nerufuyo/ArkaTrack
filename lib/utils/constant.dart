@@ -11,6 +11,7 @@ class StaticText {
 class LocalImages {
   final String arkademiLogo = 'assets/images/arkademi_logo.png';
   final String arkademiProfile = 'assets/images/default_profile.jpg';
+  final String arkademiBanner = 'assets/images/arkademi_banner.png';
 }
 
 class LocalLotties {
