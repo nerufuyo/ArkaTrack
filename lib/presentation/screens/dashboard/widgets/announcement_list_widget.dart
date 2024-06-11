@@ -1,3 +1,4 @@
+import 'package:arkatrack/presentation/widgets/app_alert_widget.dart';
 import 'package:arkatrack/style/color.dart';
 import 'package:arkatrack/style/typography.dart';
 import 'package:arkatrack/utils/constant.dart';
@@ -38,7 +39,14 @@ class AnnouncementListWidget extends StatelessWidget {
           itemCount: 5,
           itemBuilder: (context, index, realIndex) {
             return InkWell(
-              onTap: () {},
+              onTap: () => showDialog(
+                context: context,
+                builder: (context) => const AppAlertWidget(
+                  title: 'Under Maintenance',
+                  content:
+                      'This feature is under maintenance. Please try again later.',
+                ),
+              ),
               child: Container(
                 margin: const EdgeInsets.symmetric(horizontal: 8),
                 decoration: BoxDecoration(
@@ -49,7 +57,7 @@ class AnnouncementListWidget extends StatelessWidget {
                   ),
                 ),
                 child: Container(
-                  padding: const EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     gradient: LinearGradient(
