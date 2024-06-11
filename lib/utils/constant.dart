@@ -1,9 +1,17 @@
+import 'package:arkatrack/presentation/screens/dashboard/widgets/employee_widget.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/home_widget.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/inbox_widget.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/profile_widget.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/request_widget.dart';
+
 class StaticText {
   final String appName = 'ArkaTracker';
 }
 
 class LocalImages {
   final String arkademiLogo = 'assets/images/arkademi_logo.png';
+  final String arkademiProfile = 'assets/images/default_profile.jpg';
+  final String arkademiBanner = 'assets/images/arkademi_banner.png';
 }
 
 class LocalLotties {
@@ -13,6 +21,8 @@ class LocalLotties {
       'assets/lotties/attendance_easy_animation.json';
   final String efficientAttendanceAnimation =
       'assets/lotties/efficient_attendance_animation.json';
+  final String maintenanceAnimation =
+      'assets/lotties/maintenance_animation.json';
 }
 
 class LocalIcons {
@@ -32,6 +42,15 @@ class LocalIcons {
   final String eyeHideIcon = 'assets/icons/eye_hide_icon.png';
   final String googleIcon = 'assets/icons/google_icon.png';
   final String appleIcon = 'assets/icons/apple_icon.png';
+  final String bellIcon = 'assets/icons/bell_icon.png';
+  final String announcementIcon = 'assets/icons/announcement_icon.png';
+  final String overtimeIcon = 'assets/icons/overtime_icon.png';
+  final String attendanceIcon = 'assets/icons/attendance_icon.png';
+  final String formIcon = 'assets/icons/form_icon.png';
+  final String helpIcon = 'assets/icons/help_icon.png';
+  final String payslipIcon = 'assets/icons/payslip_icon.png';
+  final String reimbursementIcon = 'assets/icons/reimbursement_icon.png';
+  final String timeOffIcon = 'assets/icons/time_off_icon.png';
 }
 
 List introductionItems = [
@@ -82,8 +101,16 @@ List bottomNavigationItems = [
   {
     'icon': LocalIcons().userIcon,
     'iconActive': LocalIcons().userIconActive,
-    'label': 'User',
+    'label': 'Profile',
   },
+];
+
+List dashboardItems = [
+  const HomeWidget(),
+  const EmployeeWidget(),
+  const RequestWidget(),
+  const InboxWidget(),
+  const ProfileWidget(),
 ];
 
 List loginSocialItems = [
@@ -94,5 +121,40 @@ List loginSocialItems = [
   {
     'icon': LocalIcons().appleIcon,
     'label': 'Apple',
+  },
+];
+
+final categoriesList = [
+  {
+    'icon': LocalIcons().attendanceIcon,
+    'label': 'Attendance',
+  },
+  {
+    'icon': LocalIcons().formIcon,
+    'label': 'Forms',
+  },
+  {
+    'icon': LocalIcons().payslipIcon,
+    'label': 'Payslips',
+  },
+  {
+    'icon': LocalIcons().reimbursementIcon,
+    'label': 'Reimbursement',
+  },
+  {
+    'icon': LocalIcons().timeOffIcon,
+    'label': 'Time Off',
+  },
+  {
+    'icon': LocalIcons().overtimeIcon,
+    'label': 'Overtime',
+  },
+  {
+    'icon': LocalIcons().announcementIcon,
+    'label': 'Announcements',
+  },
+  {
+    'icon': LocalIcons().helpIcon,
+    'label': 'Help',
   },
 ];

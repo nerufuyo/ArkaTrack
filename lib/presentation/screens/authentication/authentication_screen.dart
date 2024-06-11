@@ -26,6 +26,17 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
       child: Scaffold(
         body: Stack(
           children: [
+            const Align(
+              alignment: AlignmentDirectional.bottomCenter,
+              child: Padding(
+                padding: EdgeInsets.only(bottom: 40),
+                child: AppTypography(
+                  text: '© 2024 ArkaTrack. All Rights Reserved.',
+                  fontSize: AppFontSize.small,
+                  color: AppColors.grey,
+                ),
+              ),
+            ),
             Positioned(
               top: MediaQuery.of(context).size.height * 0.075,
               right: MediaQuery.of(context).size.width * 0.075,
