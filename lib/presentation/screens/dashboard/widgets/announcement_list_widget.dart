@@ -25,7 +25,14 @@ class AnnouncementListWidget extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
             InkWell(
-              onTap: () {},
+              onTap: () => showDialog(
+                context: context,
+                builder: (context) => const AppAlertWidget(
+                  title: 'Under Maintenance',
+                  content:
+                      'This feature is under maintenance. Please try again later.',
+                ),
+              ),
               child: const AppTypography(
                 text: 'View All ',
                 fontSize: AppFontSize.medium,
