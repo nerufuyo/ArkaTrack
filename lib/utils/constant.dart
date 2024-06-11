@@ -21,6 +21,8 @@ class LocalLotties {
       'assets/lotties/attendance_easy_animation.json';
   final String efficientAttendanceAnimation =
       'assets/lotties/efficient_attendance_animation.json';
+  final String maintenanceAnimation =
+      'assets/lotties/maintenance_animation.json';
 }
 
 class LocalIcons {

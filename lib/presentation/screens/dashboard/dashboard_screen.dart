@@ -1,3 +1,4 @@
+import 'package:arkatrack/presentation/widgets/app_alert_widget.dart';
 import 'package:arkatrack/presentation/widgets/app_name_widget.dart';
 import 'package:arkatrack/style/color.dart';
 import 'package:arkatrack/style/typography.dart';
@@ -29,7 +30,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
             children: [
               const AppNameWidget(fontSize: 24),
               InkWell(
-                onTap: () {},
+                onTap: () => showDialog(
+                  context: context,
+                  builder: (context) => const AppAlertWidget(
+                    title: 'Under Maintenance',
+                    content:
+                        'This feature is under maintenance. Please try again later.',
+                  ),
+                ),
                 child: Image.asset(
                   LocalIcons().bellIcon,
                   width: 24,
