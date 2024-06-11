@@ -21,6 +21,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: AppColors.white,
+        surfaceTintColor: AppColors.white,
         title: Padding(
           padding: const EdgeInsets.only(right: 8),
           child: Row(
