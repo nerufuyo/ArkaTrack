@@ -1,4 +1,4 @@
-import 'package:arkatrack/common/static/constant.dart';
+import 'package:arkatrack/common/statics/constant.dart';
 import 'package:arkatrack/common/routes/route.dart';
 import 'package:flutter/material.dart';
 

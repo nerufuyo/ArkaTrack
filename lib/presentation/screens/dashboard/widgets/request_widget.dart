@@ -1,6 +1,6 @@
 import 'package:arkatrack/common/styles/color.dart';
 import 'package:arkatrack/common/styles/typography.dart';
-import 'package:arkatrack/common/static/constant.dart';
+import 'package:arkatrack/common/statics/constant.dart';
 import 'package:arkatrack/common/extensions/column_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
