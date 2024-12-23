@@ -43,6 +43,7 @@ class AttendanceWidget extends StatelessWidget {
               2,
               (rowIndex) => AppButtonWidget(
                 onClicked: () {
+                  Navigator.pushNamed(context, '/attendance');
                   print(rowIndex == 0 ? 'Clock In' : 'Clock Out');
                 },
                 width: MediaQuery.of(context).size.width / 2.5,

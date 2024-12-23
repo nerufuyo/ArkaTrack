@@ -1,3 +1,4 @@
+import 'package:arkatrack/presentation/screens/absence/attendance_screen.dart';
 import 'package:arkatrack/presentation/screens/authentication/authentication_screen.dart';
 import 'package:arkatrack/presentation/screens/dashboard/dashboard_screen.dart';
 import 'package:arkatrack/presentation/screens/empty/empty_screen.dart';
@@ -35,6 +36,8 @@ class MyApp extends StatelessWidget {
               return const AuthenticationScreen();
             case ScreenRouter.dashboard:
               return const DashboardScreen();
+            case ScreenRouter.attendance:
+              return const AttendanceScreen();
             case ScreenRouter.error:
               return EmptyScreen();
 

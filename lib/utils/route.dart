@@ -3,4 +3,5 @@ class ScreenRouter {
   static const String splash = '/splash';
   static const String auth = '/auth';
   static const String dashboard = '/dashboard';
+  static const String attendance = '/attendance';
 }
