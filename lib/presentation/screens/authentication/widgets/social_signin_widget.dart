@@ -1,6 +1,6 @@
 import 'package:arkatrack/common/extensions/row_extension.dart';
 import 'package:arkatrack/common/styles/color.dart';
-import 'package:arkatrack/common/static/constant.dart';
+import 'package:arkatrack/common/statics/constant.dart';
 import 'package:flutter/material.dart';
 
 class SocialSignInWidget extends StatelessWidget {

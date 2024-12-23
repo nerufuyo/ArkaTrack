@@ -1,4 +1,6 @@
+import 'package:arkatrack/common/routes/route.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashController {
   void timerNavigation(
@@ -7,7 +9,7 @@ class SplashController {
     route,
   ) async {
     await Future.delayed(Duration(seconds: duration), () {
-      Navigator.pushNamed(context, route);
+      context.goNamed(ScreenName.auth);
     });
   }
 }

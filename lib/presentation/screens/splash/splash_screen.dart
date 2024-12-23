@@ -3,7 +3,7 @@ import 'package:arkatrack/presentation/screens/splash/widgets/animated_logo_widg
 import 'package:arkatrack/presentation/widgets/app_name_widget.dart';
 import 'package:arkatrack/common/styles/color.dart';
 import 'package:arkatrack/common/styles/typography.dart';
-import 'package:arkatrack/common/static/constant.dart';
+import 'package:arkatrack/common/statics/constant.dart';
 import 'package:arkatrack/common/routes/route.dart';
 import 'package:flutter/material.dart';
 
