@@ -1,5 +1,5 @@
-import 'package:arkatrack/style/typography.dart';
-import 'package:arkatrack/utils/extension.dart';
+import 'package:arkatrack/common/styles/typography.dart';
+import 'package:arkatrack/common/extensions/column_extension.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeTextWidget extends StatelessWidget {
