@@ -1,4 +1,4 @@
-import 'package:arkatrack/style/color.dart';
+import 'package:arkatrack/common/styles/color.dart';
 import 'package:flutter/material.dart';
 
 class AppFontStyle {

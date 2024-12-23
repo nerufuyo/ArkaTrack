@@ -1,8 +1,8 @@
 import 'package:arkatrack/presentation/screens/absence/controller/attendance_controller.dart';
 import 'package:arkatrack/presentation/widgets/app_button_widget.dart';
-import 'package:arkatrack/style/color.dart';
-import 'package:arkatrack/style/typography.dart';
-import 'package:arkatrack/utils/extension.dart';
+import 'package:arkatrack/common/styles/color.dart';
+import 'package:arkatrack/common/styles/typography.dart';
+import 'package:arkatrack/common/extensions/column_extension.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 
@@ -57,7 +57,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
             child: Container(
               width: MediaQuery.of(context).size.width,
               height: 220,
-              padding: const EdgeInsets.all(16),
+              padding: const EdgeInsets.all(24),
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -82,7 +82,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                             index == 0 ? FontWeight.bold : FontWeight.normal,
                       ),
                     ),
-                  ).withVerticalSpacing(8),
+                  ).withVerticalSpacing(4),
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [

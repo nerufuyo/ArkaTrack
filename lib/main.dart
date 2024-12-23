@@ -3,8 +3,8 @@ import 'package:arkatrack/presentation/screens/authentication/authentication_scr
 import 'package:arkatrack/presentation/screens/dashboard/dashboard_screen.dart';
 import 'package:arkatrack/presentation/screens/empty/empty_screen.dart';
 import 'package:arkatrack/presentation/screens/splash/splash_screen.dart';
-import 'package:arkatrack/utils/constant.dart';
-import 'package:arkatrack/utils/route.dart';
+import 'package:arkatrack/common/static/constant.dart';
+import 'package:arkatrack/common/routes/route.dart';
 import 'package:flutter/material.dart';
 
 void main() {

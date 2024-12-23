@@ -1,10 +1,10 @@
 import 'package:arkatrack/presentation/screens/splash/controller/splash_controller.dart';
 import 'package:arkatrack/presentation/screens/splash/widgets/animated_logo_widget.dart';
 import 'package:arkatrack/presentation/widgets/app_name_widget.dart';
-import 'package:arkatrack/style/color.dart';
-import 'package:arkatrack/style/typography.dart';
-import 'package:arkatrack/utils/constant.dart';
-import 'package:arkatrack/utils/route.dart';
+import 'package:arkatrack/common/styles/color.dart';
+import 'package:arkatrack/common/styles/typography.dart';
+import 'package:arkatrack/common/static/constant.dart';
+import 'package:arkatrack/common/routes/route.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {

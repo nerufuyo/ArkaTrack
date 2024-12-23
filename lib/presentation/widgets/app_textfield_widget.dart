@@ -1,6 +1,6 @@
-import 'package:arkatrack/style/color.dart';
-import 'package:arkatrack/style/typography.dart';
-import 'package:arkatrack/utils/constant.dart';
+import 'package:arkatrack/common/styles/color.dart';
+import 'package:arkatrack/common/styles/typography.dart';
+import 'package:arkatrack/common/static/constant.dart';
 import 'package:flutter/material.dart';
 
 class AppTextFieldWidget extends StatefulWidget {
