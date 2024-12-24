@@ -1,14 +1,10 @@
-import 'package:arkatrack/style/typography.dart';
-import 'package:arkatrack/utils/extension.dart';
+import 'package:arkatrack/common/styles/typography.dart';
+import 'package:arkatrack/common/extensions/column_extension.dart';
+import 'package:arkatrack/presentation/screens/authentication/authentication_screen.dart';
 import 'package:flutter/material.dart';
 
-class WelcomeTextWidget extends StatelessWidget {
-  const WelcomeTextWidget({
-    super.key,
-    required this.selectedPageValue,
-  });
-
-  final int selectedPageValue;
+class WelcomeTextWidget extends AuthenticationScreen {
+  const WelcomeTextWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +14,7 @@ class WelcomeTextWidget extends StatelessWidget {
         children: List.generate(
           2,
           (colIndex) => AppTypography(
-            text: selectedPageValue == 0
+            text: controller.selectedPageValue.value == 0
                 ? colIndex == 0
                     ? 'Welcome Back'
                     : 'Please sign in to process your attendance request'
