@@ -1,17 +1,11 @@
 import 'package:arkatrack/common/extensions/row_extension.dart';
 import 'package:arkatrack/common/styles/color.dart';
 import 'package:arkatrack/common/statics/constant.dart';
+import 'package:arkatrack/presentation/screens/authentication/authentication_screen.dart';
 import 'package:flutter/material.dart';
 
-class SocialSignInWidget extends StatelessWidget {
-  const SocialSignInWidget({
-    super.key,
-    required this.googleSignIn,
-    required this.appleSignIn,
-  });
-
-  final Function() googleSignIn;
-  final Function() appleSignIn;
+class SocialSignInWidget extends AuthenticationScreen {
+  const SocialSignInWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +16,9 @@ class SocialSignInWidget extends StatelessWidget {
         (rowIndex) => InkWell(
           onTap: () {
             if (rowIndex == 0) {
-              googleSignIn();
+              controller.googleSignIn();
             } else {
-              appleSignIn();
+              controller.appleSignIn();
             }
           },
           child: Container(
