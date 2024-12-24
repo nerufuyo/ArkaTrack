@@ -2,8 +2,10 @@ import 'package:arkatrack/presentation/screens/absence/attendance_screen.dart';
 import 'package:arkatrack/presentation/screens/authentication/authentication_screen.dart';
 import 'package:arkatrack/presentation/screens/dashboard/dashboard_screen.dart';
 import 'package:arkatrack/presentation/screens/empty/empty_screen.dart';
+import 'package:arkatrack/presentation/screens/splash/controller/splash_controller.dart';
 import 'package:arkatrack/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 class ScreenName {
@@ -31,7 +33,11 @@ final GoRouter router = GoRouter(
     GoRoute(
       name: ScreenName.splash,
       path: ScreenRouter.splash,
-      builder: (context, state) => const SplashScreen(),
+      builder: (context, state) {
+        Get.put(SplashController());
+        return const SplashScreen();
+      },
+      onExit: (context, state) => Get.delete<SplashController>(),
     ),
     GoRoute(
       name: ScreenName.auth,
