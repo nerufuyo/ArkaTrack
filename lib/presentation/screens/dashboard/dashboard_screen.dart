@@ -1,8 +1,8 @@
 import 'package:arkatrack/presentation/widgets/app_alert_widget.dart';
 import 'package:arkatrack/presentation/widgets/app_name_widget.dart';
-import 'package:arkatrack/style/color.dart';
-import 'package:arkatrack/style/typography.dart';
-import 'package:arkatrack/utils/constant.dart';
+import 'package:arkatrack/common/styles/color.dart';
+import 'package:arkatrack/common/styles/typography.dart';
+import 'package:arkatrack/common/statics/constant.dart';
 import 'package:flutter/material.dart';
 
 class DashboardScreen extends StatefulWidget {

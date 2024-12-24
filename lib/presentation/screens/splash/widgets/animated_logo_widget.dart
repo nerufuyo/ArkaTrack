@@ -1,5 +1,5 @@
-import 'package:arkatrack/style/color.dart';
-import 'package:arkatrack/utils/constant.dart';
+import 'package:arkatrack/common/styles/color.dart';
+import 'package:arkatrack/common/statics/constant.dart';
 import 'package:flutter/material.dart';
 
 class AnimatedLogoWidget extends StatelessWidget {
