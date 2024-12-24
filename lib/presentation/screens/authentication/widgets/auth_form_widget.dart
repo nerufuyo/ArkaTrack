@@ -26,6 +26,7 @@ class AuthFormWidget extends AuthenticationScreen {
                 if (colIndex == 0) {
                   titleText = 'Email';
                   hintText = 'Enter your email';
+                  isPassword = false;
                 } else if (colIndex == 1) {
                   titleText = 'Password';
                   hintText = 'Enter your password';
@@ -49,6 +50,9 @@ class AuthFormWidget extends AuthenticationScreen {
                       : colIndex == 1
                           ? controller.passwordErrorText.value
                           : controller.confirmPasswordErrorText.value,
+                  onTogglePasswordVisibility: () =>
+                      controller.togglePasswordVisibility(colIndex),
+                  isPasswordVisible: controller.isPasswordVisible.value,
                   isPassword: isPassword,
                 );
               },

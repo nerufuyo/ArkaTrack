@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
 
 class AuthController extends GetxController {
+  final isPasswordVisible = false.obs;
   final selectedPageValue = 0.obs;
   final emailErrorText = ''.obs;
   final passwordErrorText = ''.obs;
@@ -51,5 +52,11 @@ class AuthController extends GetxController {
 
   void appleSignIn() {
     // Apple sign-in logic
+  }
+
+  void togglePasswordVisibility(index) {
+    if (index != 0) {
+      isPasswordVisible.value = !isPasswordVisible.value;
+    }
   }
 }

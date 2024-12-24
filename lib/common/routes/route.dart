@@ -47,7 +47,6 @@ final GoRouter router = GoRouter(
         Get.put(AuthController());
         return const AuthenticationScreen();
       },
-      onExit: (context, state) => Get.delete<AuthController>(),
     ),
     GoRoute(
       name: ScreenName.dashboard,
