@@ -1,6 +1,8 @@
+import 'package:arkatrack/common/services/secure_storage_services.dart';
 import 'package:arkatrack/presentation/screens/absence/attendance_screen.dart';
 import 'package:arkatrack/presentation/screens/authentication/authentication_screen.dart';
 import 'package:arkatrack/presentation/screens/authentication/controller/auth_controller.dart';
+import 'package:arkatrack/presentation/screens/dashboard/controller/dashboard_controller.dart';
 import 'package:arkatrack/presentation/screens/dashboard/dashboard_screen.dart';
 import 'package:arkatrack/presentation/screens/empty/empty_screen.dart';
 import 'package:arkatrack/presentation/screens/splash/controller/splash_controller.dart';
@@ -35,6 +37,7 @@ final GoRouter router = GoRouter(
       name: ScreenName.splash,
       path: ScreenRouter.splash,
       builder: (context, state) {
+        Get.put(SecureStorageServices());
         Get.put(SplashController());
         return const SplashScreen();
       },
@@ -51,7 +54,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       name: ScreenName.dashboard,
       path: ScreenRouter.dashboard,
-      builder: (context, state) => const DashboardScreen(),
+      builder: (context, state) {
+        Get.put(DashboardController());
+        return const DashboardScreen();
+      },
     ),
     GoRoute(
       name: ScreenName.attendance,
