@@ -62,17 +62,9 @@ class FirebaseRepository {
     }
   }
 
-  // Future<void> addUser(User user) async {
-  //   final DocumentReference userRef =
-  //       _firestore.collection('users').doc(user.uid);
-  //   final DocumentSnapshot userSnapshot = await userRef.get();
-  //   if (!userSnapshot.exists) {
-  //     await userRef.set({
-  //       'name': user.displayName,
-  //       'email': user.email,
-  //       'photoUrl': user.photoURL,
-  //       'createdAt': FieldValue.serverTimestamp(),
-  //     });
-  //   }
-  // }
+  Future<void> signOut() => _firebaseAuth.signOut();
+
+  User? get currentUser => _firebaseAuth.currentUser;
+
+  Stream<User?> get authStateChanges => _firebaseAuth.authStateChanges();
 }

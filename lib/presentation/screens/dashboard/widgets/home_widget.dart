@@ -10,6 +10,7 @@ import 'package:flutter/widgets.dart';
 class HomeWidget extends DashboardScreen {
   const HomeWidget({super.key});
 
+  @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(

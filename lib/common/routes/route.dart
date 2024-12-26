@@ -3,6 +3,8 @@ import 'package:arkatrack/presentation/screens/absence/attendance_screen.dart';
 import 'package:arkatrack/presentation/screens/authentication/authentication_screen.dart';
 import 'package:arkatrack/presentation/screens/authentication/controller/auth_controller.dart';
 import 'package:arkatrack/presentation/screens/dashboard/controller/dashboard_controller.dart';
+import 'package:arkatrack/presentation/screens/dashboard/controller/home_controller.dart';
+import 'package:arkatrack/presentation/screens/dashboard/controller/profile_controller.dart';
 import 'package:arkatrack/presentation/screens/dashboard/dashboard_screen.dart';
 import 'package:arkatrack/presentation/screens/empty/empty_screen.dart';
 import 'package:arkatrack/presentation/screens/splash/controller/splash_controller.dart';
@@ -56,6 +58,8 @@ final GoRouter router = GoRouter(
       path: ScreenRouter.dashboard,
       builder: (context, state) {
         Get.put(DashboardController());
+        Get.put(HomeController());
+        Get.put(ProfileController());
         return const DashboardScreen();
       },
     ),

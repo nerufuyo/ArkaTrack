@@ -31,8 +31,8 @@ class QuickInformationWidget extends HomeWidget {
                   2,
                   (colIndex) => AppTypography(
                     text: colIndex == 0
-                        ? controller.userName.value
-                        : controller.userRole.value,
+                        ? controller.userData.value.displayName ?? 'User'
+                        : controller.userData.value.email ?? 'No Role',
                     fontSize:
                         colIndex == 0 ? AppFontSize.medium : AppFontSize.small,
                     fontWeight:
