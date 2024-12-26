@@ -1,5 +1,8 @@
+import 'dart:developer';
+
 import 'package:arkatrack/common/routes/route.dart';
 import 'package:arkatrack/common/utils/validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -42,7 +45,52 @@ class AuthController extends GetxController {
 
     // Navigate if no errors
     if (hasNoErrors) {
-      GoRouter.of(globalKey.currentContext!).goNamed(ScreenName.dashboard);
+      if (selectedPageValue.value == 0) {
+        signInWithEmailAndPassword();
+      } else {
+        signUpWithEmailAndPassword();
+      }
+
+      GoRouter.of(globalKey.currentContext!).go(ScreenRouter.dashboard);
+    }
+  }
+
+  Future<void> signUpWithEmailAndPassword() async {
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.value.text,
+        password: confirmPasswordController.value.text,
+      );
+
+      log('User created: ${credential.user}');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        passwordErrorText.value = 'The password provided is too weak.';
+      } else if (e.code == 'email-already-in-use') {
+        emailErrorText.value = 'The account already exists for that email.';
+      }
+    } catch (e) {
+      log('Error: $e');
+    }
+  }
+
+  Future<void> signInWithEmailAndPassword() async {
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.value.text,
+        password: passwordController.value.text,
+      );
+
+      log('User signed in: ${credential.user}');
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        emailErrorText.value = 'No user found for that email.';
+      } else if (e.code == 'wrong-password') {
+        passwordErrorText.value = 'Wrong password provided for that user.';
+      }
+    } catch (e) {
+      log('Error: $e');
     }
   }
 

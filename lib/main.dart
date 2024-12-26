@@ -1,8 +1,13 @@
 import 'package:arkatrack/common/statics/constant.dart';
 import 'package:arkatrack/common/routes/route.dart';
+import 'package:arkatrack/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
