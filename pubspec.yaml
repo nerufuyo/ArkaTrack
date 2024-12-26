@@ -20,6 +20,7 @@ dependencies:
   go_router: ^14.6.2
   firebase_core: ^3.9.0
   firebase_auth: ^5.3.4
+  flutter_dotenv: ^5.2.1
 
 dev_dependencies:
   flutter_test:
@@ -33,3 +34,4 @@ flutter:
     - assets/fonts/
     - assets/lotties/
     - assets/icons/
+    - .env
