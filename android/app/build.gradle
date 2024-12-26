@@ -26,6 +26,16 @@ if (flutterVersionName == null) {
     flutterVersionName = "1.0"
 }
 
+
+def firebaseConfigFile = flutterDotenv['ANDROID_GOOGLE_SERIVCE_JSON']
+if (firebaseConfigFile) {
+    task copyGoogleServices(type: Copy) {
+        from firebaseConfigFile
+        into file("$buildDir")
+    }
+    preBuild.dependsOn(copyGoogleServices)
+}
+
 android {
     namespace = "com.example.arkatrack"
     compileSdk = flutter.compileSdkVersion
