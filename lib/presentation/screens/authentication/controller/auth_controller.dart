@@ -1,10 +1,8 @@
-import 'dart:developer';
-
 import 'package:arkatrack/common/routes/route.dart';
 import 'package:arkatrack/common/services/secure_storage_services.dart';
 import 'package:arkatrack/common/utils/validator.dart';
+import 'package:arkatrack/domain/repositories/firebase_repository.dart';
 import 'package:arkatrack/presentation/widgets/app_dialog_info_widget.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:go_router/go_router.dart';
@@ -12,6 +10,7 @@ import 'package:go_router/go_router.dart';
 class AuthController extends GetxController {
   final SecureStorageServices secureStorageServices =
       Get.find<SecureStorageServices>();
+  final FirebaseRepository firebaseRepository = FirebaseRepository();
 
   final isPasswordVisible = false.obs;
   final selectedPageValue = 0.obs;
@@ -61,86 +60,73 @@ class AuthController extends GetxController {
   }
 
   Future<void> signUpWithEmailAndPassword() async {
-    try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.value.text,
-        password: confirmPasswordController.value.text,
-      );
+    final status = await firebaseRepository.signUpWithEmailAndPassword(
+      email: emailController.value.text,
+      password: passwordController.value.text,
+    );
 
-      showDialog(
-        context: globalKey.currentContext!,
-        barrierDismissible: false,
-        builder: (context) => const AppDialogInfoWidget(
-          type: AppDialogInfoType.success,
-          title: 'Success',
-          message: 'User signed up successfully',
-        ),
-      );
-
-      Future.delayed(const Duration(seconds: 3), () {
-        if (Navigator.canPop(globalKey.currentContext!)) {
-          Navigator.pop(globalKey.currentContext!);
+    status.fold(
+      (error) {
+        if (error == 'The account already exists for that email.') {
+          emailErrorText.value = error;
+        } else if (error == 'The password provided is too weak.') {
+          passwordErrorText.value = error;
         }
-        selectedPageValue.value = 0;
-      });
-    } on FirebaseAuthException catch (e) {
-      final errorMessages = {
-        'weak-password': 'The password provided is too weak.',
-        'email-already-in-use': 'The account already exists for that email.',
-      };
+      },
+      (user) async {
+        await secureStorageServices.writeSecureData('userId', user.uid);
+        showDialog(
+          context: globalKey.currentContext!,
+          builder: (context) => const AppDialogInfoWidget(
+            type: AppDialogInfoType.success,
+            title: 'Success',
+            message: 'User signed up successfully',
+          ),
+        );
 
-      final errorMessage = errorMessages[e.code];
-
-      if (errorMessage != null) {
-        (e.code == 'weak-password' ? passwordErrorText : emailErrorText).value =
-            errorMessage;
-      }
-    } catch (e) {
-      log('Error: $e');
-    }
+        Future.delayed(const Duration(seconds: 3), () {
+          if (Navigator.canPop(globalKey.currentContext!)) {
+            Navigator.pop(globalKey.currentContext!);
+          }
+          selectedPageValue.value = 0;
+        });
+      },
+    );
   }
 
   Future<void> signInWithEmailAndPassword() async {
-    try {
-      final userData = await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.value.text,
-        password: passwordController.value.text,
-      );
+    final status = await firebaseRepository.signInWithEmailAndPassword(
+      email: emailController.value.text,
+      password: passwordController.value.text,
+    );
 
-      await secureStorageServices.writeSecureData('userId', userData.user!.uid);
-
-      showDialog(
-        context: globalKey.currentContext!,
-        builder: (context) => const AppDialogInfoWidget(
-          type: AppDialogInfoType.success,
-          title: 'Success',
-          message: 'User signed in successfully',
-        ),
-      );
-
-      Future.delayed(const Duration(seconds: 3), () {
-        if (Navigator.canPop(globalKey.currentContext!)) {
-          Navigator.pop(globalKey.currentContext!);
+    status.fold(
+      (error) {
+        if (error == 'No user found for that email.') {
+          emailErrorText.value = error;
+        } else if (error == 'Wrong password provided for that user.') {
+          passwordErrorText.value = error;
         }
-        GoRouter.of(globalKey.currentContext!).go(ScreenRouter.dashboard);
-      });
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        emailErrorText.value = 'No user found for that email.';
-      } else if (e.code == 'wrong-password') {
-        passwordErrorText.value = 'Wrong password provided for that user.';
-      }
-    } catch (e) {
-      log('Error: $e');
-    }
-  }
+      },
+      (user) async {
+        await secureStorageServices.writeSecureData('userId', user.uid);
+        showDialog(
+          context: globalKey.currentContext!,
+          builder: (context) => const AppDialogInfoWidget(
+            type: AppDialogInfoType.success,
+            title: 'Success',
+            message: 'User signed in successfully',
+          ),
+        );
 
-  void googleSignIn() {
-    // Google sign-in logic
-  }
-
-  void appleSignIn() {
-    // Apple sign-in logic
+        Future.delayed(const Duration(seconds: 3), () {
+          if (Navigator.canPop(globalKey.currentContext!)) {
+            Navigator.pop(globalKey.currentContext!);
+          }
+          GoRouter.of(globalKey.currentContext!).go(ScreenRouter.dashboard);
+        });
+      },
+    );
   }
 
   void togglePasswordVisibility(index) {

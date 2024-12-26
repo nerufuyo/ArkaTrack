@@ -14,13 +14,7 @@ class SocialSignInWidget extends AuthenticationScreen {
       children: List.generate(
         loginSocialItems.length,
         (rowIndex) => InkWell(
-          onTap: () {
-            if (rowIndex == 0) {
-              controller.googleSignIn();
-            } else {
-              controller.appleSignIn();
-            }
-          },
+          onTap: () {},
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(
