@@ -6,8 +6,13 @@ class Validator {
     Rx<TextEditingController> emailController,
     RxString emailErrorText,
   ) {
+    final emailRegex =
+        RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$');
+
     if (emailController.value.text.isEmpty) {
       emailErrorText.value = 'Email cannot be empty';
+    } else if (!emailRegex.hasMatch(emailController.value.text)) {
+      emailErrorText.value = 'Invalid email format';
     } else {
       emailErrorText.value = '';
     }

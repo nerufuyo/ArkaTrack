@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:arkatrack/common/routes/route.dart';
 import 'package:arkatrack/common/utils/validator.dart';
+import 'package:arkatrack/presentation/widgets/app_dialog_info_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -50,20 +51,34 @@ class AuthController extends GetxController {
       } else {
         signUpWithEmailAndPassword();
       }
-
-      GoRouter.of(globalKey.currentContext!).go(ScreenRouter.dashboard);
     }
   }
 
   Future<void> signUpWithEmailAndPassword() async {
     try {
-      final credential =
-          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
         email: emailController.value.text,
         password: confirmPasswordController.value.text,
-      );
+      )
+          .then((value) {
+        showDialog(
+          context: globalKey.currentContext!,
+          builder: (context) => const AppDialogInfoWidget(
+            type: AppDialogInfoType.success,
+            title: 'Success',
+            message: 'User signed up successfully',
+          ),
+        );
 
-      log('User created: ${credential.user}');
+        Future.delayed(const Duration(seconds: 3), () {
+          if (Navigator.canPop(globalKey.currentContext!)) {
+            Navigator.pop(globalKey.currentContext!);
+          }
+
+          selectedPageValue.value = 0;
+        });
+      });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         passwordErrorText.value = 'The password provided is too weak.';
@@ -77,12 +92,28 @@ class AuthController extends GetxController {
 
   Future<void> signInWithEmailAndPassword() async {
     try {
-      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+      FirebaseAuth.instance
+          .signInWithEmailAndPassword(
         email: emailController.value.text,
         password: passwordController.value.text,
-      );
+      )
+          .then((value) {
+        showDialog(
+          context: globalKey.currentContext!,
+          builder: (context) => const AppDialogInfoWidget(
+            type: AppDialogInfoType.success,
+            title: 'Success',
+            message: 'User signed in successfully',
+          ),
+        );
 
-      log('User signed in: ${credential.user}');
+        Future.delayed(const Duration(seconds: 3), () {
+          if (Navigator.canPop(globalKey.currentContext!)) {
+            Navigator.pop(globalKey.currentContext!);
+          }
+          GoRouter.of(globalKey.currentContext!).go(ScreenRouter.dashboard);
+        });
+      });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         emailErrorText.value = 'No user found for that email.';
