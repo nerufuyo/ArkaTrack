@@ -1,8 +1,8 @@
-import 'package:arkatrack/presentation/screens/dashboard/widgets/employee_widget.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/employee/employee_widget.dart';
 import 'package:arkatrack/presentation/screens/dashboard/widgets/home/home_widget.dart';
-import 'package:arkatrack/presentation/screens/dashboard/widgets/inbox_widget.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/inbox/inbox_widget.dart';
 import 'package:arkatrack/presentation/screens/dashboard/widgets/profile/profile_widget.dart';
-import 'package:arkatrack/presentation/screens/dashboard/widgets/request_widget.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/request/request_widget.dart';
 
 class StaticText {
   final String appName = 'ArkaTracker';

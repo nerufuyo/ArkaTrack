@@ -34,15 +34,15 @@ class ProfileWidget extends GetView<ProfileController> {
                     ),
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Column(
+                  child: const Column(
                     children: [
                       ListTile(
-                        title: const Text('Language'),
-                        trailing: const Text('English'),
+                        title: Text('Language'),
+                        trailing: Text('English'),
                       ),
                       ListTile(
-                        title: const Text('Theme'),
-                        trailing: const Text('Light'),
+                        title: Text('Theme'),
+                        trailing: Text('Light'),
                       ),
                     ],
                   ),

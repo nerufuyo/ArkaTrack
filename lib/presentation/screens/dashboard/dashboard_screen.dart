@@ -50,9 +50,8 @@ class DashboardScreen extends GetView<DashboardController> {
           onTap: (index) => controller.selectedPageValue.value = index,
           type: BottomNavigationBarType.fixed,
           selectedLabelStyle: const TextStyle(
-            color: AppColors.black,
-            fontSize: AppFontSize.medium,
-            fontWeight: FontWeight.w500,
+            fontSize: AppFontSize.small,
+            fontWeight: FontWeight.bold,
           ),
           items: List.generate(
             bottomNavigationItems.length,

@@ -6,6 +6,8 @@ import 'package:arkatrack/presentation/screens/dashboard/controller/dashboard_co
 import 'package:arkatrack/presentation/screens/dashboard/controller/home_controller.dart';
 import 'package:arkatrack/presentation/screens/dashboard/controller/profile_controller.dart';
 import 'package:arkatrack/presentation/screens/dashboard/dashboard_screen.dart';
+import 'package:arkatrack/presentation/screens/edit_profile/controller/edit_profile_controller.dart';
+import 'package:arkatrack/presentation/screens/edit_profile/edit_profile_screen.dart';
 import 'package:arkatrack/presentation/screens/empty/empty_screen.dart';
 import 'package:arkatrack/presentation/screens/splash/controller/splash_controller.dart';
 import 'package:arkatrack/presentation/screens/splash/splash_screen.dart';
@@ -19,6 +21,7 @@ class ScreenName {
   static const String auth = 'auth';
   static const String dashboard = 'dashboard';
   static const String attendance = 'attendance';
+  static const String editProfile = 'editProfile';
 }
 
 class ScreenRouter {
@@ -27,6 +30,7 @@ class ScreenRouter {
   static const String auth = '/auth';
   static const String dashboard = '/dashboard';
   static const String attendance = '/attendance';
+  static const String editProfile = '/edit-profile';
 }
 
 final GlobalKey<NavigatorState> globalKey = GlobalKey<NavigatorState>();
@@ -67,6 +71,14 @@ final GoRouter router = GoRouter(
       name: ScreenName.attendance,
       path: ScreenRouter.attendance,
       builder: (context, state) => const AttendanceScreen(),
+    ),
+    GoRoute(
+      name: ScreenName.editProfile,
+      path: ScreenRouter.editProfile,
+      builder: (context, state) {
+        Get.put(EditProfileController());
+        return const EditProfileScreen();
+      },
     ),
     GoRoute(
       name: ScreenName.error,
