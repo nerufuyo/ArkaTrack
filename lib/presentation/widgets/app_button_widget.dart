@@ -15,6 +15,8 @@ class AppButtonWidget extends StatefulWidget {
     this.buttonColor,
     this.buttonBorderColor,
     this.textColor,
+    this.fontSize,
+    this.padding,
   });
 
   final Function? onClicked;
@@ -27,6 +29,8 @@ class AppButtonWidget extends StatefulWidget {
   final Color? buttonColor;
   final Color? buttonBorderColor;
   final Color? textColor;
+  final double? fontSize;
+  final double? padding;
 
   @override
   State<AppButtonWidget> createState() => _AppButtonWidgetState();
@@ -44,7 +48,7 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
       child: Container(
         width: widget.width,
         height: widget.height,
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(widget.padding ?? 16),
         decoration: BoxDecoration(
           color: widget.buttonColor ?? AppColors.primary,
           border: Border.all(
@@ -56,7 +60,7 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
         child: widget.buttonIcon == ''
             ? AppTypography(
                 text: widget.buttonText ?? 'Try Again',
-                fontSize: AppFontSize.large,
+                fontSize: widget.fontSize ?? AppFontSize.large,
                 fontWeight: FontWeight.bold,
                 color: widget.textColor ?? AppColors.white,
               )
@@ -73,7 +77,7 @@ class _AppButtonWidgetState extends State<AppButtonWidget> {
                   ],
                   AppTypography(
                     text: widget.buttonText ?? 'Try Again',
-                    fontSize: AppFontSize.large,
+                    fontSize: widget.fontSize ?? AppFontSize.large,
                     fontWeight: FontWeight.bold,
                     color: widget.textColor ?? AppColors.white,
                   ),

@@ -1,11 +1,9 @@
 import 'dart:developer';
 
-import 'package:arkatrack/common/routes/route.dart';
 import 'package:arkatrack/common/services/secure_storage_services.dart';
 import 'package:arkatrack/domain/models/user_model.dart';
 import 'package:arkatrack/domain/repositories/firebase_repository.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 class DashboardController extends GetxController {
   final SecureStorageServices secureStorageServices =
@@ -28,13 +26,5 @@ class DashboardController extends GetxController {
     if (currentUser != null) {
       userData.value = UserModel.fromUser(currentUser);
     }
-  }
-
-  void logout() async {
-    Future.wait([
-      secureStorageServices.deleteSecureData('userId'),
-      firebaseRepository.signOut(),
-    ]).then((value) =>
-        GoRouter.of(globalKey.currentContext!).goNamed(ScreenName.auth));
   }
 }

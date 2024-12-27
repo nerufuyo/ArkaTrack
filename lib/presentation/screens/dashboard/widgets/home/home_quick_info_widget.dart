@@ -3,12 +3,12 @@ import 'package:arkatrack/common/styles/color.dart';
 import 'package:arkatrack/common/styles/typography.dart';
 import 'package:arkatrack/common/statics/constant.dart';
 import 'package:arkatrack/common/extensions/column_extension.dart';
-import 'package:arkatrack/presentation/screens/dashboard/widgets/home_widget.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/home/home_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class QuickInformationWidget extends HomeWidget {
-  const QuickInformationWidget({super.key});
+class HomeQuickInformationWidget extends HomeWidget {
+  const HomeQuickInformationWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

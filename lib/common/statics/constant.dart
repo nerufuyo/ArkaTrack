@@ -1,7 +1,7 @@
 import 'package:arkatrack/presentation/screens/dashboard/widgets/employee_widget.dart';
-import 'package:arkatrack/presentation/screens/dashboard/widgets/home_widget.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/home/home_widget.dart';
 import 'package:arkatrack/presentation/screens/dashboard/widgets/inbox_widget.dart';
-import 'package:arkatrack/presentation/screens/dashboard/widgets/profile_widget.dart';
+import 'package:arkatrack/presentation/screens/dashboard/widgets/profile/profile_widget.dart';
 import 'package:arkatrack/presentation/screens/dashboard/widgets/request_widget.dart';
 
 class StaticText {

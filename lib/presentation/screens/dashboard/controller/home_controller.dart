@@ -1,3 +1,3 @@
-import 'package:arkatrack/presentation/screens/dashboard/controller/dashboard_controller.dart';
+import 'package:get/get.dart';
 
-class HomeController extends DashboardController {}
+class HomeController extends GetxController {}

@@ -59,11 +59,11 @@ class DashboardScreen extends GetView<DashboardController> {
             (index) => BottomNavigationBarItem(
               icon: Image.asset(
                 bottomNavigationItems[index]['icon'],
-                width: 28,
+                width: 24,
               ),
               activeIcon: Image.asset(
                 bottomNavigationItems[index]['iconActive'],
-                width: 28,
+                width: 24,
               ),
               label: bottomNavigationItems[index]['label'],
             ),

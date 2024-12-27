@@ -5,8 +5,8 @@ import 'package:arkatrack/common/statics/constant.dart';
 import 'package:arkatrack/common/extensions/column_extension.dart';
 import 'package:flutter/material.dart';
 
-class CategoryListsWidget extends StatelessWidget {
-  const CategoryListsWidget({
+class HomeCategoryWidget extends StatelessWidget {
+  const HomeCategoryWidget({
     super.key,
   });
 

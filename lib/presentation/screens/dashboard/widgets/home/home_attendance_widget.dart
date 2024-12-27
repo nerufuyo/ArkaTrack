@@ -4,8 +4,8 @@ import 'package:arkatrack/common/styles/typography.dart';
 import 'package:arkatrack/common/extensions/column_extension.dart';
 import 'package:flutter/material.dart';
 
-class AttendanceWidget extends StatelessWidget {
-  const AttendanceWidget({
+class HomeAttendanceWidget extends StatelessWidget {
+  const HomeAttendanceWidget({
     super.key,
   });
 

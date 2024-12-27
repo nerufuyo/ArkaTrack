@@ -6,8 +6,8 @@ import 'package:arkatrack/common/extensions/column_extension.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
-class AnnouncementListWidget extends StatelessWidget {
-  const AnnouncementListWidget({
+class HomeAnnouncementWidget extends StatelessWidget {
+  const HomeAnnouncementWidget({
     super.key,
   });
 
