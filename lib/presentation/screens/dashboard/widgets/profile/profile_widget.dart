@@ -59,7 +59,7 @@ class ProfileWidget extends GetView<ProfileController> {
                   buttonText: 'Logout',
                   buttonColor: Colors.red,
                   buttonBorderColor: Colors.red,
-                )
+                ),
               ],
             ).withVerticalSpacing(8),
           ],
