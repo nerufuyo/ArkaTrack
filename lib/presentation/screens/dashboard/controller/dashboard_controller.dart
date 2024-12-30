@@ -29,18 +29,18 @@ class DashboardController extends GetxController {
     getData();
   }
 
+  @override
+  void onClose() {
+    super.onClose();
+    _timer?.cancel();
+  }
+
   void startTimeUpdate() {
     _timer = Timer.periodic(const Duration(seconds: 1), (_) async {
       DateTime now = DateTime.now();
       String time = dateServices.getFormattedTime(now);
       formattedTime.value = time;
     });
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-    _timer?.cancel();
   }
 
   void getData() async {
