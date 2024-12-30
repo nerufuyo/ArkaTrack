@@ -40,9 +40,9 @@ class EditProfileScreen extends GetView<EditProfileController> {
               itemBuilder: (context, index) {
                 final data = controller.getProfileData()[index];
                 return AppTextFieldWidget(
-                  hintText: data['hintText'],
-                  titleText: data['title'],
-                  controller: data['controller'].value,
+                  hintText: data.hintText,
+                  titleText: data.title,
+                  controller: data.controller,
                 );
               },
             ),

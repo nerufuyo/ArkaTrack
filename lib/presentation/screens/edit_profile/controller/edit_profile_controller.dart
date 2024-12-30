@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:arkatrack/common/routes/route.dart';
 import 'package:arkatrack/common/services/secure_storage_services.dart';
 import 'package:arkatrack/common/statics/constant.dart';
+import 'package:arkatrack/domain/models/profile_field_model.dart';
 import 'package:arkatrack/domain/models/user_model.dart';
 import 'package:arkatrack/domain/repositories/firebase_repository.dart';
 import 'package:flutter/material.dart';
@@ -26,23 +27,23 @@ class EditProfileController extends GetxController {
     getData();
   }
 
-  List<Map<String, dynamic>> getProfileData() {
+  List<ProfileField> getProfileData() {
     return [
-      {
-        'title': 'Name',
-        'controller': name,
-        'hintText': 'Enter your name',
-      },
-      {
-        'title': 'Email',
-        'controller': email,
-        'hintText': 'Enter your email',
-      },
-      {
-        'title': 'Role',
-        'controller': role,
-        'hintText': 'Enter your role',
-      },
+      ProfileField(
+        title: 'Name',
+        controller: name.value,
+        hintText: 'Enter your name',
+      ),
+      ProfileField(
+        title: 'Email',
+        controller: email.value,
+        hintText: 'Enter your email',
+      ),
+      ProfileField(
+        title: 'Role',
+        controller: role.value,
+        hintText: 'Enter your role',
+      ),
     ];
   }
 
