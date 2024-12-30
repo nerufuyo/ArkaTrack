@@ -32,7 +32,7 @@ class HomeQuickInformationWidget extends HomeWidget {
                   (colIndex) => AppTypography(
                     text: colIndex == 0
                         ? controller.userData.value.displayName ?? 'User'
-                        : controller.userData.value.email ?? 'No Role',
+                        : controller.userData.value.role ?? 'No Role',
                     fontSize:
                         colIndex == 0 ? AppFontSize.medium : AppFontSize.small,
                     fontWeight:

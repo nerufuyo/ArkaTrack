@@ -12,6 +12,7 @@ class UserModel {
   final String? refreshToken;
   final String? tenantId;
   final String? uid;
+  final String? role;
 
   UserModel({
     this.displayName,
@@ -25,6 +26,7 @@ class UserModel {
     this.refreshToken,
     this.tenantId,
     this.uid,
+    this.role,
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -42,6 +44,7 @@ class UserModel {
       refreshToken: json['refreshToken'],
       tenantId: json['tenantId'],
       uid: json['uid'],
+      role: json['role'],
     );
   }
 
@@ -71,6 +74,7 @@ class UserModel {
       refreshToken: user.refreshToken,
       tenantId: user.tenantId,
       uid: user.uid,
+      role: '',
     );
   }
 
@@ -87,6 +91,7 @@ class UserModel {
       'refreshToken': refreshToken,
       'tenantId': tenantId,
       'uid': uid,
+      'role': role,
     };
   }
 }

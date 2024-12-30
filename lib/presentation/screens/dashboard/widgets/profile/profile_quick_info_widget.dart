@@ -1,8 +1,11 @@
+import 'package:arkatrack/common/routes/route.dart';
+import 'package:arkatrack/common/statics/constant.dart';
 import 'package:arkatrack/common/styles/typography.dart';
 import 'package:arkatrack/presentation/screens/dashboard/widgets/profile/profile_widget.dart';
 import 'package:arkatrack/presentation/widgets/app_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
 class ProfileQuickInformationWidget extends ProfileWidget {
   const ProfileQuickInformationWidget({super.key});
@@ -13,7 +16,7 @@ class ProfileQuickInformationWidget extends ProfileWidget {
       children: [
         CircleAvatar(
           radius: 48,
-          backgroundImage: AssetImage(controller.imageUrl.value),
+          backgroundImage: AssetImage(LocalImages().arkademiProfile),
         ),
         AppTypography(
           text: controller.name.value,
@@ -27,7 +30,9 @@ class ProfileQuickInformationWidget extends ProfileWidget {
         Padding(
           padding: const EdgeInsets.only(top: 16),
           child: AppButtonWidget(
-            onClicked: () {},
+            onClicked: () => GoRouter.of(globalKey.currentContext!).goNamed(
+              ScreenName.editProfile,
+            ),
             buttonText: 'Edit Profile',
             fontSize: AppFontSize.small,
             width: context.width * 0.325,

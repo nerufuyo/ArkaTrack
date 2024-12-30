@@ -23,16 +23,15 @@ class ProfileController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getUserData();
+    Future.delayed(const Duration(milliseconds: 300), () => getUserData());
   }
 
-  void getUserData() {
-    name.value = dashboardController.userData.value.displayName ?? 'User';
-    email.value =
-        dashboardController.userData.value.email ?? 'Don\'t have email';
+  void getUserData() async {
+    name.value = dashboardController.userData.value.displayName ?? '';
+    email.value = dashboardController.userData.value.email ?? '';
     imageUrl.value =
         dashboardController.userData.value.photoURL ?? images.arkademiProfile;
-    // role.value = dashboardController.userData.value.role;
+    role.value = dashboardController.userData.value.role ?? '';
   }
 
   void logout() async {

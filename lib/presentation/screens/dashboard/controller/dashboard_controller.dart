@@ -20,11 +20,12 @@ class DashboardController extends GetxController {
   }
 
   void getData() async {
-    final currentUser = firebaseRepository.currentUser;
-    log('currentUser: $currentUser');
+    final userId = await secureStorageServices.readSecureData('userId');
+    final currentUser = await firebaseRepository.getUserData(userId.toString());
 
-    if (currentUser != null) {
-      userData.value = UserModel.fromUser(currentUser);
-    }
+    currentUser.fold(
+      (error) => log('Error: $error'),
+      (user) => userData.value = user,
+    );
   }
 }

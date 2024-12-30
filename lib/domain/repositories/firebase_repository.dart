@@ -81,7 +81,6 @@ class FirebaseRepository {
   Future<Either<String, UserModel>> updateProfile({
     required String displayName,
     required String photoURL,
-    required PhoneAuthCredential phoneNumber,
     required String email,
     required String role,
   }) async {
@@ -95,8 +94,6 @@ class FirebaseRepository {
       await Future.wait([
         user.updateDisplayName(displayName),
         user.updatePhotoURL(photoURL),
-        user.updatePhoneNumber(phoneNumber),
-        user.verifyBeforeUpdateEmail(email),
       ]);
 
       await user.reload();
@@ -107,6 +104,9 @@ class FirebaseRepository {
       await _firestore.collection('users').doc(updatedUser.uid).set(
             userModel.toJson()
               ..addAll({
+                'displayName': displayName,
+                'email': email,
+                'photoURL': photoURL,
                 'role': role,
                 'updatedAt': FieldValue.serverTimestamp(),
               }),
