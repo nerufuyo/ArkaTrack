@@ -42,16 +42,16 @@ class HomeQuickInformationWidget extends HomeWidget {
               ).withVerticalSpacing(2),
             ],
           ).withHorizontalSpacing(8),
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               AppTypography(
-                text: 'Monday, 20 Sep 2021',
+                text: controller.dateServices.getFormattedDate(),
                 fontSize: AppFontSize.medium,
                 fontWeight: FontWeight.bold,
               ),
               AppTypography(
-                text: '08:30:15 WIB ',
+                text: controller.formattedTime.value,
                 fontSize: AppFontSize.small,
                 color: AppColors.black,
               ),
