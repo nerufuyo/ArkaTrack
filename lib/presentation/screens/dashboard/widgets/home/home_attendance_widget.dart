@@ -1,10 +1,14 @@
+import 'package:arkatrack/common/routes/route.dart';
+import 'package:arkatrack/presentation/screens/dashboard/controller/home_controller.dart';
 import 'package:arkatrack/presentation/widgets/app_button_widget.dart';
 import 'package:arkatrack/common/styles/color.dart';
 import 'package:arkatrack/common/styles/typography.dart';
 import 'package:arkatrack/common/extensions/column_extension.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
-class HomeAttendanceWidget extends StatelessWidget {
+class HomeAttendanceWidget extends GetView<HomeController> {
   const HomeAttendanceWidget({
     super.key,
   });
@@ -42,10 +46,9 @@ class HomeAttendanceWidget extends StatelessWidget {
             children: List.generate(
               2,
               (rowIndex) => AppButtonWidget(
-                onClicked: () {
-                  Navigator.pushNamed(context, '/attendance');
-                  print(rowIndex == 0 ? 'Clock In' : 'Clock Out');
-                },
+                onClicked: () => GoRouter.of(context).goNamed(
+                  ScreenName.attendance,
+                ),
                 width: MediaQuery.of(context).size.width / 2.5,
                 buttonText: rowIndex == 0 ? 'Clock In' : 'Clock Out',
                 buttonColor:

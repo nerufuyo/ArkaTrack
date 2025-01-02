@@ -24,6 +24,7 @@ dependencies:
   flutter_secure_storage: ^9.2.2
   cloud_firestore: ^5.6.0
   google_sign_in: ^6.2.2
+  permission_handler: ^11.3.1
 
 dev_dependencies:
   flutter_test:

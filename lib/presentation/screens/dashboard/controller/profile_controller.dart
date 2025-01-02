@@ -23,7 +23,7 @@ class ProfileController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    Future.delayed(const Duration(milliseconds: 300), () => getUserData());
+    Future.delayed(const Duration(seconds: 1), () => getUserData());
   }
 
   void getUserData() async {
