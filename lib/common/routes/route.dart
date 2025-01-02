@@ -63,6 +63,7 @@ final GoRouter router = GoRouter(
         Get.put(AuthController());
         return const AuthenticationScreen();
       },
+      onExit: (context, state) => Get.delete<AuthController>(),
     ),
     GoRoute(
       name: ScreenName.dashboard,
@@ -81,6 +82,7 @@ final GoRouter router = GoRouter(
         Get.put(AttendanceController());
         return const AttendanceScreen();
       },
+      onExit: (context, state) => Get.delete<AttendanceController>(),
     ),
     GoRoute(
       name: ScreenName.editProfile,
@@ -89,6 +91,7 @@ final GoRouter router = GoRouter(
         Get.put(EditProfileController());
         return const EditProfileScreen();
       },
+      onExit: (context, state) => Get.delete<EditProfileController>(),
     ),
     GoRoute(
       name: ScreenName.error,
