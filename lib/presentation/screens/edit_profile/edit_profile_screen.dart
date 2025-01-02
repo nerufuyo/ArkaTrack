@@ -1,7 +1,7 @@
 import 'package:arkatrack/common/routes/route.dart';
-import 'package:arkatrack/common/styles/typography.dart';
 import 'package:arkatrack/presentation/screens/edit_profile/controller/edit_profile_controller.dart';
 import 'package:arkatrack/presentation/widgets/app_button_widget.dart';
+import 'package:arkatrack/presentation/widgets/app_min_header_widget.dart';
 import 'package:arkatrack/presentation/widgets/app_textfield_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,16 +13,11 @@ class EditProfileScreen extends GetView<EditProfileController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const AppTypography(
-          text: 'Edit Profile',
-          fontSize: AppFontSize.large,
-          fontWeight: FontWeight.bold,
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded),
-          onPressed: () => GoRouter.of(globalKey.currentContext!)
-              .goNamed(ScreenName.dashboard),
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: AppMinimalisHeaderWidget(
+          title: 'Edit Profile',
+          onBack: () => GoRouter.of(context).goNamed(ScreenName.dashboard),
         ),
       ),
       body: SingleChildScrollView(

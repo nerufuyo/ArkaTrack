@@ -2,7 +2,8 @@ import 'package:arkatrack/common/services/date_services.dart';
 import 'package:arkatrack/common/services/location_services.dart';
 import 'package:arkatrack/common/services/permission_services.dart';
 import 'package:arkatrack/common/services/secure_storage_services.dart';
-import 'package:arkatrack/presentation/screens/absence/attendance_screen.dart';
+import 'package:arkatrack/presentation/screens/attendance/attendance_screen.dart';
+import 'package:arkatrack/presentation/screens/attendance/controller/attendance_controller.dart';
 import 'package:arkatrack/presentation/screens/authentication/authentication_screen.dart';
 import 'package:arkatrack/presentation/screens/authentication/controller/auth_controller.dart';
 import 'package:arkatrack/presentation/screens/dashboard/controller/dashboard_controller.dart';
@@ -76,7 +77,10 @@ final GoRouter router = GoRouter(
     GoRoute(
       name: ScreenName.attendance,
       path: ScreenRouter.attendance,
-      builder: (context, state) => const AttendanceScreen(),
+      builder: (context, state) {
+        Get.put(AttendanceController());
+        return const AttendanceScreen();
+      },
     ),
     GoRoute(
       name: ScreenName.editProfile,

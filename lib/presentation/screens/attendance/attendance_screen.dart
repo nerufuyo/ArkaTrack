@@ -1,53 +1,58 @@
-import 'package:arkatrack/presentation/screens/absence/controller/attendance_controller.dart';
+import 'package:arkatrack/presentation/screens/attendance/controller/attendance_controller.dart';
 import 'package:arkatrack/presentation/widgets/app_button_widget.dart';
 import 'package:arkatrack/common/styles/color.dart';
 import 'package:arkatrack/common/styles/typography.dart';
 import 'package:arkatrack/common/extensions/column_extension.dart';
+import 'package:arkatrack/presentation/widgets/app_min_header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:get/get.dart';
+import 'package:latlong2/latlong.dart';
 
-class AttendanceScreen extends StatefulWidget {
+class AttendanceScreen extends GetView<AttendanceController> {
   const AttendanceScreen({super.key});
-
-  @override
-  State<AttendanceScreen> createState() => _AttendanceScreenState();
-}
-
-class _AttendanceScreenState extends State<AttendanceScreen> {
-  final AttendanceController attendanceController = AttendanceController();
-
-  @override
-  void initState() {
-    super.initState();
-    attendanceController.getCurrentLocation();
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const AppTypography(
-          text: 'Attendance',
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(56),
+        child: AppMinimalisHeaderWidget(
+          title: 'Attendance',
+          onBack: () => controller.navigateToDashboard(),
         ),
       ),
       body: Stack(
         children: [
           FlutterMap(
-            options: const MapOptions(
-              // initialCenter: LatLng(51.509364, -0.128928),
-              initialZoom: 9.2,
+            options: MapOptions(
+              initialCenter: LatLng(
+                controller.currentLatitude.value,
+                controller.currentLongitude.value,
+              ),
+              initialZoom: 16,
             ),
             children: [
               TileLayer(
                 urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 userAgentPackageName: 'com.example.app',
               ),
-              RichAttributionWidget(
-                attributions: [
-                  TextSourceAttribution('OpenStreetMap contributors',
-                      onTap: () {}),
+              MarkerLayer(
+                alignment: Alignment.center,
+                markers: [
+                  Marker(
+                    width: 80.0,
+                    height: 80.0,
+                    point: LatLng(
+                      controller.currentLatitude.value,
+                      controller.currentLongitude.value,
+                    ),
+                    child: const Icon(
+                      Icons.location_on,
+                      color: AppColors.error,
+                      size: 40,
+                    ),
+                  ),
                 ],
               ),
             ],
