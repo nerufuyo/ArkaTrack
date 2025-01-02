@@ -1,4 +1,5 @@
 import 'package:arkatrack/common/services/date_services.dart';
+import 'package:arkatrack/common/services/location_services.dart';
 import 'package:arkatrack/common/services/permission_services.dart';
 import 'package:arkatrack/common/services/secure_storage_services.dart';
 import 'package:arkatrack/presentation/screens/absence/attendance_screen.dart';
@@ -48,6 +49,7 @@ final GoRouter router = GoRouter(
         Get.put(DevicePermissionServices());
         Get.put(SecureStorageServices());
         Get.put(DateServices());
+        Get.put(LocationServices());
         Get.put(SplashController());
         return const SplashScreen();
       },
