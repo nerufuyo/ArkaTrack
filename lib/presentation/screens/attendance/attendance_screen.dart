@@ -1,3 +1,4 @@
+import 'package:arkatrack/common/routes/route.dart';
 import 'package:arkatrack/presentation/screens/attendance/controller/attendance_controller.dart';
 import 'package:arkatrack/presentation/widgets/app_button_widget.dart';
 import 'package:arkatrack/common/styles/color.dart';
@@ -7,6 +8,7 @@ import 'package:arkatrack/presentation/widgets/app_min_header_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 
 class AttendanceScreen extends GetView<AttendanceController> {
@@ -19,7 +21,7 @@ class AttendanceScreen extends GetView<AttendanceController> {
         preferredSize: const Size.fromHeight(56),
         child: AppMinimalisHeaderWidget(
           title: 'Attendance',
-          onBack: () => controller.navigateToDashboard(),
+          onBack: () => GoRouter.of(context).goNamed(ScreenName.dashboard),
         ),
       ),
       body: Stack(

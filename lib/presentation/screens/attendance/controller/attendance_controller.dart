@@ -1,7 +1,5 @@
-import 'package:arkatrack/common/routes/route.dart';
 import 'package:arkatrack/common/services/location_services.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
 
 class AttendanceController extends GetxService {
   final LocationServices locationServices = Get.find<LocationServices>();
@@ -18,9 +16,5 @@ class AttendanceController extends GetxService {
   void getCurrentLocation() async {
     currentLatitude.value = locationServices.currentLatitude.value;
     currentLongitude.value = locationServices.currentLongitude.value;
-  }
-
-  void navigateToDashboard() {
-    GoRouter.of(globalKey.currentContext!).goNamed(ScreenName.dashboard);
   }
 }
