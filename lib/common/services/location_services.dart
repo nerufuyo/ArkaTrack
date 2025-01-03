@@ -1,4 +1,5 @@
 import 'package:arkatrack/common/utils/either.dart';
+import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:latlong2/latlong.dart';
@@ -8,6 +9,7 @@ class LocationServices extends GetxService {
 
   final RxDouble currentLatitude = 0.0.obs;
   final RxDouble currentLongitude = 0.0.obs;
+  final RxString currentAddress = ''.obs;
 
   Future<Either<String, Position>> getCurrentLatLong() async {
     try {
@@ -15,6 +17,24 @@ class LocationServices extends GetxService {
       return Right(locationData);
     } catch (e) {
       setCurrentLatLong(0.0, 0.0);
+      return Left(e.toString());
+    }
+  }
+
+  Future<Either<String, String>> getAddress() async {
+    try {
+      final placemarks = await placemarkFromCoordinates(
+        currentLatitude.value,
+        currentLongitude.value,
+      );
+      if (placemarks.isNotEmpty) {
+        final placemark = placemarks.first;
+        currentAddress.value =
+            '${placemark.street}, ${placemark.locality}, ${placemark.administrativeArea}, ${placemark.country}';
+        return Right(currentAddress.value);
+      }
+      return Left('No address found for the given coordinates.');
+    } catch (e) {
       return Left(e.toString());
     }
   }

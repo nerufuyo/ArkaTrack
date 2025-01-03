@@ -46,7 +46,7 @@ class HomeAttendanceWidget extends GetView<HomeController> {
             children: List.generate(
               2,
               (rowIndex) => AppButtonWidget(
-                onClicked: () => GoRouter.of(context).goNamed(
+                onClicked: () => GoRouter.of(globalKey.currentContext!).goNamed(
                   ScreenName.attendance,
                 ),
                 width: MediaQuery.of(context).size.width / 2.5,

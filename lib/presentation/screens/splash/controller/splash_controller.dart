@@ -52,6 +52,7 @@ class SplashController extends GetxController {
         locationData.fold(
           (error) => log('Failed to get location data: $error'),
           (location) {
+            log('Location Data: $location');
             locationServices.setCurrentLatLong(
               location.latitude,
               location.longitude,

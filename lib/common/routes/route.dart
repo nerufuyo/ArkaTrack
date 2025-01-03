@@ -13,6 +13,8 @@ import 'package:arkatrack/presentation/screens/dashboard/dashboard_screen.dart';
 import 'package:arkatrack/presentation/screens/edit_profile/controller/edit_profile_controller.dart';
 import 'package:arkatrack/presentation/screens/edit_profile/edit_profile_screen.dart';
 import 'package:arkatrack/presentation/screens/empty/empty_screen.dart';
+import 'package:arkatrack/presentation/screens/face_recognition/controller/face_recognition_controller.dart';
+import 'package:arkatrack/presentation/screens/face_recognition/face_recognition_screen.dart';
 import 'package:arkatrack/presentation/screens/splash/controller/splash_controller.dart';
 import 'package:arkatrack/presentation/screens/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +27,7 @@ class ScreenName {
   static const String auth = 'auth';
   static const String dashboard = 'dashboard';
   static const String attendance = 'attendance';
+  static const String faceRecognition = 'faceRecognition';
   static const String editProfile = 'editProfile';
 }
 
@@ -34,6 +37,7 @@ class ScreenRouter {
   static const String auth = '/auth';
   static const String dashboard = '/dashboard';
   static const String attendance = '/attendance';
+  static const String faceRecognition = '/face-recognition';
   static const String editProfile = '/edit-profile';
 }
 
@@ -83,6 +87,15 @@ final GoRouter router = GoRouter(
         return const AttendanceScreen();
       },
       onExit: (context, state) => Get.delete<AttendanceController>(),
+    ),
+    GoRoute(
+      name: ScreenName.faceRecognition,
+      path: ScreenRouter.faceRecognition,
+      builder: (context, state) {
+        Get.put(FaceRecognitionController());
+        return const FaceRecognitionScreen();
+      },
+      onExit: (context, state) => Get.delete<FaceRecognitionController>(),
     ),
     GoRoute(
       name: ScreenName.editProfile,

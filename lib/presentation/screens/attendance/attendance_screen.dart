@@ -16,122 +16,117 @@ class AttendanceScreen extends GetView<AttendanceController> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(56),
-        child: AppMinimalisHeaderWidget(
-          title: 'Attendance',
-          onBack: () => GoRouter.of(context).goNamed(ScreenName.dashboard),
+    return Obx(
+      () => Scaffold(
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(56),
+          child: AppMinimalisHeaderWidget(
+            title: 'Attendance',
+            onBack: () => GoRouter.of(globalKey.currentContext!)
+                .goNamed(ScreenName.dashboard),
+          ),
         ),
-      ),
-      body: Stack(
-        children: [
-          FlutterMap(
-            options: MapOptions(
-              initialCenter: LatLng(
-                controller.currentLatitude.value,
-                controller.currentLongitude.value,
-              ),
-              initialZoom: 16,
-            ),
-            children: [
-              TileLayer(
-                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                userAgentPackageName: 'com.example.app',
-              ),
-              MarkerLayer(
-                alignment: Alignment.center,
-                markers: [
-                  Marker(
-                    width: 80.0,
-                    height: 80.0,
-                    point: LatLng(
-                      controller.currentLatitude.value,
-                      controller.currentLongitude.value,
-                    ),
-                    child: const Icon(
-                      Icons.location_on,
-                      color: AppColors.error,
-                      size: 40,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 220,
-              padding: const EdgeInsets.all(24),
-              decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20),
-                  topRight: Radius.circular(20),
+        body: Stack(
+          children: [
+            FlutterMap(
+              mapController: controller.mapController,
+              options: MapOptions(
+                initialCenter: LatLng(
+                  controller.currentLatitude.value,
+                  controller.currentLongitude.value,
                 ),
+                initialZoom: 18,
               ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: List.generate(
-                      2,
-                      (index) => AppTypography(
-                        text: index == 0
-                            ? 'Your Location'
-                            : 'Jl. Raya Bogor, No. 1, Jakarta',
-                        fontSize: index == 0
-                            ? AppFontSize.extraLarge
-                            : AppFontSize.large,
-                        fontWeight:
-                            index == 0 ? FontWeight.bold : FontWeight.normal,
+              children: [
+                TileLayer(
+                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  userAgentPackageName: 'com.example.app',
+                ),
+                MarkerLayer(
+                  alignment: Alignment.center,
+                  markers: [
+                    Marker(
+                      width: 80.0,
+                      height: 80.0,
+                      point: LatLng(
+                        controller.currentLatitude.value,
+                        controller.currentLongitude.value,
+                      ),
+                      child: const Icon(
+                        Icons.location_on,
+                        color: AppColors.error,
+                        size: 40,
                       ),
                     ),
-                  ).withVerticalSpacing(4),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Column(
-                        children: [
-                          AppTypography(
-                            text: 'Distance',
-                            fontSize: AppFontSize.small,
-                            color: AppColors.black,
-                          ),
-                          AppTypography(
-                            text: '0.5 km',
-                            fontSize: AppFontSize.medium,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          AppTypography(
-                            text: 'Accuracy',
-                            fontSize: AppFontSize.small,
-                            color: AppColors.black,
-                          ),
-                          AppTypography(
-                            text: '10 m',
-                            fontSize: AppFontSize.medium,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  AppButtonWidget(
-                    onClicked: () {},
-                    buttonText: 'Clock In',
-                  ),
-                ],
-              ).withVerticalSpacing(8),
+                  ],
+                ),
+              ],
             ),
-          ),
-        ],
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.3,
+                padding: const EdgeInsets.all(16),
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20),
+                  ),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Column(
+                      children: List.generate(
+                        2,
+                        (index) => AppTypography(
+                          text: index == 0
+                              ? 'You are at'
+                              : controller.currentAddress.value,
+                          fontSize: index == 0
+                              ? AppFontSize.extraLarge
+                              : AppFontSize.medium,
+                          fontWeight:
+                              index == 0 ? FontWeight.bold : FontWeight.normal,
+                          textAlign: TextAlign.center,
+                          maxLines: 2,
+                        ),
+                      ),
+                    ).withVerticalSpacing(16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: List.generate(
+                        controller.getDistance().length,
+                        (index) => Column(
+                          children: [
+                            AppTypography(
+                              text: controller.getDistance()[index]['title']!,
+                              fontSize: AppFontSize.medium,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            AppTypography(
+                              text: controller.getDistance()[index]['value']!,
+                              fontSize: AppFontSize.medium,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    AppButtonWidget(
+                      buttonText: 'Clock In/Out',
+                      onClicked: () =>
+                          GoRouter.of(globalKey.currentContext!).goNamed(
+                        ScreenName.faceRecognition,
+                      ),
+                    ),
+                  ],
+                ).withVerticalSpacing(16),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
