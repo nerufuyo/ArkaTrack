@@ -95,7 +95,10 @@ final GoRouter router = GoRouter(
         Get.put(FaceRecognitionController());
         return const FaceRecognitionScreen();
       },
-      onExit: (context, state) => Get.delete<FaceRecognitionController>(),
+      onExit: (context, state) {
+        Get.delete<FaceRecognitionController>();
+        return true;
+      },
     ),
     GoRoute(
       name: ScreenName.editProfile,

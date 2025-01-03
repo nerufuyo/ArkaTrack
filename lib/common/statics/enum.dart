@@ -1,0 +1,1 @@
+enum AttendanceType { clockIn, clockOut }

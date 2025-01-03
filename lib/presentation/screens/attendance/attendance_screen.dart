@@ -1,5 +1,6 @@
 import 'package:arkatrack/common/extensions/column_extension.dart';
 import 'package:arkatrack/common/routes/route.dart';
+import 'package:arkatrack/common/statics/enum.dart';
 import 'package:arkatrack/common/styles/color.dart';
 import 'package:arkatrack/common/styles/typography.dart';
 import 'package:arkatrack/presentation/screens/attendance/controller/attendance_controller.dart';
@@ -115,7 +116,10 @@ class AttendanceScreen extends GetView<AttendanceController> {
                       ),
                     ),
                     AppButtonWidget(
-                      buttonText: 'Clock In/Out',
+                      buttonText: controller.attendanceType.value ==
+                              AttendanceType.clockIn.toString()
+                          ? 'Clock In'
+                          : 'Clock Out',
                       onClicked: () =>
                           GoRouter.of(globalKey.currentContext!).goNamed(
                         ScreenName.faceRecognition,

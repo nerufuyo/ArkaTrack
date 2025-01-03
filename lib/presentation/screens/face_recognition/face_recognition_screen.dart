@@ -14,7 +14,7 @@ class FaceRecognitionScreen extends GetView<FaceRecognitionController> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(56),
         child: AppMinimalisHeaderWidget(
-          title: 'Attendance',
+          title: 'Face Recognition',
           onBack: () => GoRouter.of(globalKey.currentContext!)
               .goNamed(ScreenName.dashboard),
         ),

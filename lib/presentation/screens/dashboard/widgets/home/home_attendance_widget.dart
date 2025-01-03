@@ -46,9 +46,12 @@ class HomeAttendanceWidget extends GetView<HomeController> {
             children: List.generate(
               2,
               (rowIndex) => AppButtonWidget(
-                onClicked: () => GoRouter.of(globalKey.currentContext!).goNamed(
-                  ScreenName.attendance,
-                ),
+                onClicked: () {
+                  controller.setAttendanceType(rowIndex);
+                  GoRouter.of(globalKey.currentContext!).goNamed(
+                    ScreenName.attendance,
+                  );
+                },
                 width: MediaQuery.of(context).size.width / 2.5,
                 buttonText: rowIndex == 0 ? 'Clock In' : 'Clock Out',
                 buttonColor:
