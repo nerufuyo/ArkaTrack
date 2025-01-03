@@ -4,7 +4,7 @@ import 'package:arkatrack/common/services/location_services.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:get/get.dart';
 
-class AttendanceController extends GetxService {
+class AttendanceController extends GetxController {
   final LocationServices locationServices = Get.find<LocationServices>();
   final MapController mapController = MapController();
 
